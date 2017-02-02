@@ -1,0 +1,54 @@
+
+<ion-header>
+
+  <ion-navbar color="secondary">
+    <ion-title>OS Retorno</ion-title>
+    <button ion-button menuToggle="">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<ion-list *ngFor="let osList of osLists">
+    <ion-item-sliding *ngIf="osList.status == 1">
+      <ion-item>
+        <ion-thumbnail item-left>
+          <h1><br>{{osList.filial}} | {{osList.os}}</h1>
+        <ion-icon name="build" item-left large></ion-icon>
+          
+        </ion-thumbnail>
+        
+        <h2>{{osList.cliente}}</h2>
+        <h2>{{osList.local}}</h2>
+        <h2>{{osList.sistema}} | {{osList.servico}}</h2>
+        <span>{{osList.data}}, {{osList.nickuser}}</span>
+        
+      </ion-item>
+      <ion-item>
+        <span item-left>OAT: {{osList.id}}</span>
+        <p item-left>(Sol.: {{osList.data_sol}})</p>
+        <button ion-button icon-left clear item-right *ngIf="osList.localLat != 0">
+          <a href='https://maps.google.com/maps?q={{ osList.localLat}}%2C{{osList.localLog}}&z=17&hl=pt-BR' target='_blank'><ion-icon name="map"></ion-icon></a>
+          Ir ao Mapa
+        </button>
+        <button ion-button icon-left clear color="dark" item-right *ngIf="osList.localLat == 0">
+          <ion-icon name="pin"></ion-icon>
+          Sem Posição
+        </button>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="danger" (click)="deletarPerfil(osList)">
+              Deletar
+        </button>
+      </ion-item-options>
+      <ion-item-options side="left">
+        <button ion-button color="secondary" (click)="editarPerfil(osList)">
+              Editar
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

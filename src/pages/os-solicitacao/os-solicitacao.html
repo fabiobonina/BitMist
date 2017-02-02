@@ -1,0 +1,59 @@
+<!--
+  Generated template for the OsSolicitacao page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="secondary">
+    <ion-title>OS Solicitacao</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"> </ion-icon>
+    </button>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding >
+  <ion-list *ngFor="let osList of osLists">
+    <ion-item-sliding *ngIf="osList.status == 0">
+      
+      <ion-item color="violeta">
+        <ion-thumbnail item-left>
+          <h2><br>{{osList.filial}} | {{osList.os}}</h2>
+          <h2>{{osList.data}}</h2>
+        </ion-thumbnail>
+        <h3>{{osList.cliente}}</h3>
+        <h3>{{osList.local}}</h3>
+        <h3>{{osList.sistema}} | {{osList.servico}}</h3>
+
+        <ion-fab right top >
+          <a href='https://maps.google.com/maps?q={{ osList.localLat}}%2C{{osList.localLog}}&z=17&hl=pt-BR' target='_blank' class="button button-outline button-positive" ion-fab mini *ngIf="osList.localLat != 0"><ion-icon name="pin"></ion-icon></a>
+          <button ion-fab mini clear color="light" *ngIf="osList.localLat == 0">
+            <ion-icon name="pin"></ion-icon>
+          </button>
+        </ion-fab>
+        
+      </ion-item>
+      <ion-item color="light">
+        <h6 item-left >OAT: {{osList.id}} (Sol.: {{osList.data_sol}}),  {{osList.nickuser}}</h6>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="danger" (click)="deletarPerfil(osList)">
+              Deletar
+        </button>
+      </ion-item-options>
+      <ion-item-options side="left">
+        <button ion-button color="secondary" (click)="editarPerfil(osList)">
+              Editar
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  <ion-fab bottom right >
+    <button ion-fab color="danger" (click)="insert()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>
