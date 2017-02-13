@@ -37,11 +37,14 @@ import { OsProvider} from '../providers/os-provider';
   entryComponents: [
     MyApp,
     HomePage,
+    LocalidadePage,
     UsuarioPage,
     UsuarioAddPage,
     OsSolicitacaoPage,
     OsRetornoPage,
-    OsModalPage
+    OsModalPage,
+    LoginPage,
+    SignupPage
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},

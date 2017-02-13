@@ -62,6 +62,7 @@ export class UsuarioPage implements OnInit{
       deletarPerfil(user) {
             // console.log(user);
             // console.log(user.id);
+            
             this.service.deleteData(user.id)
                   .subscribe(
                         data=>{

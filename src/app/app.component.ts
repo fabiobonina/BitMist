@@ -4,6 +4,7 @@ import { StatusBar, Splashscreen } from 'ionic-native';
 
 import { HomePage } from '../pages/home/home';
 import { UsuarioPage } from '../pages/usuario/usuario';
+import { LoginPage } from '../pages/login/login';
 
 
 
@@ -11,7 +12,7 @@ import { UsuarioPage } from '../pages/usuario/usuario';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage = HomePage;
+  rootPage = LoginPage;
 
   home = HomePage;
   usuario = UsuarioPage;
