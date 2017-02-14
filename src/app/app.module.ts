@@ -14,6 +14,7 @@ import { SignupPage } from '../pages/signup/signup';
 
 import { UserProvider} from '../providers/user-provider';
 import { OsProvider} from '../providers/os-provider';
+import { MyService} from '../providers/my-service';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { OsProvider} from '../providers/os-provider';
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     {provide: OsProvider, useClass: OsProvider},
-    {provide: UserProvider, useClass: UserProvider}
+    {provide: UserProvider, useClass: UserProvider},
+    {provide: MyService, useClass: MyService}
     ]
 })
 export class AppModule {}

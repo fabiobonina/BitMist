@@ -34,7 +34,8 @@ export class LoginPage {
     //console.log(this.data.username);
     this.service.loginData(this.login)
       .subscribe(
-                data=>{console.log(data.mensage);
+                data=>{console.log(data);
+                
                        //this.navCtrl.setRoot(HomePage);     
                 },
                 err=>console.log(err)
@@ -45,7 +46,7 @@ export class LoginPage {
     let username = this.login.username;
     let password = this.login.password;
     let data = JSON.stringify({username, password});
-    let link = "http://localhost/codephp/skyhub/api/newapi.php";
+    let link = "http://localhost/codephp/skyhub/api/apiLogin.php";
 
     this.http.post(link,data)
         .subscribe(data=>{
