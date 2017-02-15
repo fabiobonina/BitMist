@@ -4,7 +4,6 @@ import { Validators, FormBuilder } from '@angular/forms';
 
 import { OsModalPage} from '../os-modal/os-modal';
 import { OsProvider } from '../../providers/os-provider';
-import { MyService } from '../../providers/my-service';
 /*
   Generated class for the OsSolicitacao page.
 
@@ -19,30 +18,21 @@ export class OsSolicitacaoPage implements OnInit{
 
   cadastro : any = {};
   osLists : any[];
-  items: any= {};
 
   constructor(public navCtrl: NavController,
               public formBuilder : FormBuilder, 
               public navParams: NavParams,
               public modalCtrl: ModalController,
-              public osDao: OsProvider,
-              public dataService: MyService) {
+              public osDao: OsProvider) {
                 this.cadastro = this.formBuilder.group({
                   nome:['', Validators.required],
                   email:['', Validators.required],
                   senha:['', Validators.required]
-                });
-                this.dataService.getData()
-                  
-                  .then((todos) => {
-                    this.items = JSON.parse(todos);
-                    console.log(this.items);
-	              });
+            });
   }
 
   ngOnInit() {
-      this.getDados();
-      this.getPrefil();
+            this.getDados();
   }
 
   getDados() {
@@ -53,11 +43,6 @@ export class OsSolicitacaoPage implements OnInit{
               err=> console.log(err)
         );
   }
-  getPrefil(){
-    
-
-  }
-  
 
 
 }

@@ -16,11 +16,6 @@
 </ion-header>
 
 <ion-content padding >
-  <ion-list>
-    <ion-item *ngFor="let item of items">{{item.nome}}</ion-item>
-      Fabio
-      {{item.nome}}
-  </ion-list>
   <ion-list *ngFor="let osList of osLists">
     <ion-item-sliding *ngIf="osList.status == 0">
       

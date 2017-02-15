@@ -1,7 +1,6 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { Storage } from '@ionic/storage'; 
 
 import { HomePage } from '../pages/home/home';
 import { LocalidadePage} from '../pages/localidade/localidade';
@@ -48,7 +47,7 @@ import { MyService} from '../providers/my-service';
     LoginPage,
     SignupPage
   ],
-  providers: [ Storage,
+  providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     {provide: OsProvider, useClass: OsProvider},
     {provide: UserProvider, useClass: UserProvider},

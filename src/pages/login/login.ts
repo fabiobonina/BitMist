@@ -6,7 +6,7 @@ import { Validators, FormBuilder } from '@angular/forms';
 import { SignupPage } from '../signup/signup';
 import { HomePage } from '../home/home';
 import { UserProvider } from '../../providers/user-provider';
-import { MyService } from '../../providers/my-service';
+
 
 
 @Component({
@@ -20,11 +20,10 @@ export class LoginPage {
   constructor(public navCtrl: NavController,
               public http: Http,
               public navParams: NavParams,
-              public formBuilder: FormBuilder,
-              private alert:AlertController,
-              private loading: LoadingController,
+              public formBuilder : FormBuilder,
               public service: UserProvider,
-              public dataService: MyService) {
+              private alert :AlertController,
+              private loading : LoadingController) {
                 this.login = {};
                 this.login.username = "";
                 this.login.password = "";
@@ -36,11 +35,8 @@ export class LoginPage {
     this.service.loginData(this.login)
       .subscribe(
                 data=>{console.log(data);
-                if(data.permissao === true){
-                  this.dataService.save(data);
-                  this.navCtrl.setRoot(HomePage);  
-                }
-                          
+                
+                       //this.navCtrl.setRoot(HomePage);     
                 },
                 err=>console.log(err)
     );
