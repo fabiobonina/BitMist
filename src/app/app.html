@@ -1,6 +1,7 @@
 <ion-menu [content]="conteudo">
   <ion-content >
     <ion-list color="secondary">
+      <button ion-item icon-only (click)="openPage(home)" menuClose color="secondary"><ion-icon name="home"></ion-icon>{{nome}}</button>
       <button ion-item icon-only (click)="openPage(home)" menuClose color="secondary"><ion-icon name="home"></ion-icon>Home</button>
       <button ion-item icon-only (click)="openPage(usuario)" menuClose color="secondary"><ion-icon name="contact"></ion-icon>Pefil</button>
       <button ion-item icon-only (click)="logout()" menuClose color="secondary"><ion-icon name="power"></ion-icon>Sair</button>

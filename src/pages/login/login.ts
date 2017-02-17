@@ -38,8 +38,8 @@ export class LoginPage {
       .subscribe(
                 data=>{console.log(data);
                 if(data.permissao === true){
-                this.myservice.save(data);
-                this.navCtrl.setRoot(HomePage);
+                  this.myservice.save(data);
+                  this.navCtrl.setRoot(HomePage);
                 }
                        //this.navCtrl.setRoot(HomePage);     
                 },
