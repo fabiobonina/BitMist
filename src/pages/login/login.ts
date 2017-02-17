@@ -6,6 +6,7 @@ import { Validators, FormBuilder } from '@angular/forms';
 import { SignupPage } from '../signup/signup';
 import { HomePage } from '../home/home';
 import { UserProvider } from '../../providers/user-provider';
+import { MyService } from '../../providers/my-service';
 
 
 
@@ -23,7 +24,8 @@ export class LoginPage {
               public formBuilder : FormBuilder,
               public service: UserProvider,
               private alert :AlertController,
-              private loading : LoadingController) {
+              private loading : LoadingController,
+              private myservice: MyService) {
                 this.login = {};
                 this.login.username = "";
                 this.login.password = "";
@@ -35,7 +37,10 @@ export class LoginPage {
     this.service.loginData(this.login)
       .subscribe(
                 data=>{console.log(data);
-                
+                if(data.permissao === true){
+                this.myservice.save(data);
+                this.navCtrl.setRoot(HomePage);
+                }
                        //this.navCtrl.setRoot(HomePage);     
                 },
                 err=>console.log(err)
