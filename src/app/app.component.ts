@@ -5,6 +5,8 @@ import { StatusBar, Splashscreen } from 'ionic-native';
 import { HomePage } from '../pages/home/home';
 import { UsuarioPage } from '../pages/usuario/usuario';
 import { LoginPage } from '../pages/login/login';
+import { ClientePage } from '../pages/cliente/cliente';
+import { LocalidadePage } from '../pages/localidade/localidade';
 
 
 
@@ -12,10 +14,12 @@ import { LoginPage } from '../pages/login/login';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage = LoginPage;
+  rootPage = HomePage;
 
   home = HomePage;
   usuario = UsuarioPage;
+  cliente = ClientePage;
+  localidade = LocalidadePage;
 
   constructor(platform: Platform) {
     platform.ready().then(() => {

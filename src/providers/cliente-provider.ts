@@ -1,27 +1,27 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response, ResponseOptions } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 /*
-  Generated class for the UserProvider provider.
+  Generated class for the ClienteProvider provider.
 
   See https://angular.io/docs/ts/latest/guide/dependency-injection.html
   for more info on providers and Angular 2 DI.
 */
 @Injectable()
-export class UserProvider {
+export class ClienteProvider {
 
+  
       api : string = 'http://localhost/codephp/skyhub/api/';
 
   constructor(public http: Http) {}
       getData() {
-            return this.http.get(this.api + 'apiRecupera.php').map(res=>res.json())
+            return this.http.get(this.api + 'apiClienteList.php').map(res=>res.json())
       }
 
       postData(parans) {
             let headers = new Headers({ 'Content-Type' : 'application/x-www-form-urlencoded' });
-            return this.http.post(this.api + "apiCadastro.php", parans, {
+            return this.http.post(this.api + "apiClienteAdd.php", parans, {
                   headers:headers,
                   method:"POST"
             }).map(
@@ -43,7 +43,7 @@ export class UserProvider {
       
       deleteData(id) {
             let headers = new Headers({ 'Content-Type' : 'application/x-www-form-urlencoded' });
-            return this.http.post(this.api + "apiDeleta.php", id, {
+            return this.http.post(this.api + "apiClienteDel.php", id, {
                   headers:headers
                   }).map(
                   (res:Response) => {return res.json();}
@@ -51,7 +51,7 @@ export class UserProvider {
       }
         updateData(data) {
             let headers = new Headers({ 'Content-Type' : 'application/x-www-form-urlencoded' });
-            return this.http.post(this.api + "apiUpdate.php", data, {
+            return this.http.post(this.api + "apiClienteEdt.php", data, {
                   headers:headers,
                   method:"POST"
             }).map(

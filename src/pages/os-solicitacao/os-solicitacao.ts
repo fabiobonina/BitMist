@@ -19,7 +19,7 @@ export class OsSolicitacaoPage implements OnInit{
 
   cadastro : any = {};
   osLists : any[];
-  nickuser;
+  public nickuser;
   public items = [];
 
   constructor(public navCtrl: NavController,
@@ -33,14 +33,16 @@ export class OsSolicitacaoPage implements OnInit{
           email:['', Validators.required],
           senha:['', Validators.required]
     });
-    this.dataService.getData().then((todos) => {
+    /*this.dataService.getData().then((todos) => {
       if(todos){
+        this.nickuser = todos.nickuser;
         this.items = JSON.parse(todos);
         
       }
       console.log(this.items);
-      //this.nickuser=> this.items.nome;
-    });
+      console.log(this.nickuser);
+      
+    });*/
   }
 
   ngOnInit() {
@@ -54,7 +56,8 @@ export class OsSolicitacaoPage implements OnInit{
               data=> this.osLists = data,
               err=> console.log(err)
         );
+        
   }
-
+  
 
 }

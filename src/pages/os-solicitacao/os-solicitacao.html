@@ -16,15 +16,10 @@
 </ion-header>
 
 <ion-content padding >
-  <ion-list *ngFor="let item of itens">
-    <ion-item-sliding >
-      
+  <ion-list *ngFor="let teste of itens">
       <ion-item>
-        <h3>{{item.nome}}</h3>
+        <h3>{{teste.nome}} teste</h3>
       </ion-item>
-
-
-    </ion-item-sliding>
   </ion-list>
   <ion-list *ngFor="let osList of osLists">
     <ion-item-sliding *ngIf="osList.status == 0">
