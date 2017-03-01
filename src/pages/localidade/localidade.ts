@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
+import { LocalidadeProvider } from '../../providers/localidade-provider';
 /*
   Generated class for the Localidade page.
 
@@ -11,12 +12,28 @@ import { NavController, NavParams } from 'ionic-angular';
   selector: 'page-localidade',
   templateUrl: 'localidade.html'
 })
-export class LocalidadePage {
+export class LocalidadePage implements OnInit {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  localidade : any[];
+
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public _local: LocalidadeProvider) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LocalidadePage');
+  }
+  ngOnInit() {
+    this.getDados();
+  }
+
+  getDados() {
+    //retorno de Dados
+    this._local.getData()
+      .subscribe(
+        data=> this.localidade = data,
+        err=> console.log(err)
+      );
   }
 
 }

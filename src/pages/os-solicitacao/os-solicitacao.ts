@@ -19,6 +19,7 @@ export class OsSolicitacaoPage implements OnInit{
 
   cadastro : any = {};
   osLists : any[];
+  user : any = {};
   public nickuser;
   public items = [];
 
@@ -33,20 +34,12 @@ export class OsSolicitacaoPage implements OnInit{
           email:['', Validators.required],
           senha:['', Validators.required]
     });
-    /*this.dataService.getData().then((todos) => {
-      if(todos){
-        this.nickuser = todos.nickuser;
-        this.items = JSON.parse(todos);
-        
-      }
-      console.log(this.items);
-      console.log(this.nickuser);
-      
-    });*/
+    
   }
 
   ngOnInit() {
             this.getDados();
+            this.getUser();
   }
 
   getDados() {
@@ -58,6 +51,30 @@ export class OsSolicitacaoPage implements OnInit{
         );
         
   }
-  
+  getUser() {
+    this.dataService.getData().then((todos) => {
+      this.user = JSON.parse(todos);
+      err=> console.log(err)   
+    });
+    console.log(this.user);  
+  }
+
+  /*insert() {
+    let modal = this.modalCtrl.create(OsModalPage);
+    modal.onDidDismiss(data => {
+      if (data) {
+        this.dao.insert(data, (lancamento) => {
+          this.updateMonth(new Date(lancamento.data));
+          Toast.showShortBottom("Lançamento Inserido Com Sucesso !").subscribe(
+            toast => {
+              console.log(toast);
+            });
+        });
+      }
+    });
+    modal.present();
+  }*/
+
 
 }
+  

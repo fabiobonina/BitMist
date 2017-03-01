@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { Http, Headers } from '@angular/http';
 import { Validators, FormBuilder } from '@angular/forms';
@@ -14,9 +14,10 @@ import { MyService } from '../../providers/my-service';
   selector: 'page-login',
   templateUrl: 'login.html'
 })
-export class LoginPage {
+export class LoginPage implements OnInit{
 
   login : any = {};
+  user : any = {};
 
   constructor(public navCtrl: NavController,
               public http: Http,
@@ -25,11 +26,23 @@ export class LoginPage {
               public service: UserProvider,
               private alert :AlertController,
               private loading : LoadingController,
-              private myservice: MyService) {
+              private dataService: MyService) {
                 this.login = {};
                 this.login.username = "";
                 this.login.password = "";
               }
+
+  ngOnInit() {
+      this.getUser();
+  }
+
+  getUser() {
+    this.dataService.getData().then((todos) => {
+      this.user = JSON.parse(todos);
+      err=> console.log(err)   
+    });
+    console.log(this.user);  
+  }
 
   logar() {
     //console.log(this.data);
@@ -38,10 +51,10 @@ export class LoginPage {
       .subscribe(
                 data=>{console.log(data);
                 if(data.permissao === true){
-                  this.myservice.save(data);
+                  this.dataService.save(data);
                   this.navCtrl.setRoot(HomePage);
                 }
-                       //this.navCtrl.setRoot(HomePage);     
+                  //this.navCtrl.setRoot(HomePage);     
                 },
                 err=>console.log(err)
     );

@@ -7,7 +7,8 @@ import { Storage } from '@ionic/storage';
 @Injectable()
 export class MyService {
 
-  constructor(public storage: Storage) {
+  constructor(public storage: Storage,
+              public http: Http) {
     
   }
 

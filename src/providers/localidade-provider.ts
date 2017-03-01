@@ -11,8 +11,14 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class LocalidadeProvider {
 
+  api : string = 'http://localhost/codephp/skyhub/api/';
+
   constructor(public http: Http) {
     console.log('Hello LocalidadeProvider Provider');
+  }
+
+  getData() {
+    return this.http.get(this.api + 'apiLocalList.php').map(res=>res.json())
   }
 
 }
