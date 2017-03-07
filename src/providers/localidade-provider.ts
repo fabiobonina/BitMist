@@ -13,12 +13,24 @@ export class LocalidadeProvider {
 
   api : string = 'http://localhost/codephp/skyhub/api/';
 
+  localidades : any[];
+  
   constructor(public http: Http) {
     console.log('Hello LocalidadeProvider Provider');
   }
 
   getData() {
     return this.http.get(this.api + 'apiLocalList.php').map(res=>res.json())
+  }
+
+  filterItems(searchTerm){
+    this.getData().subscribe(
+        data=> this.localidades = data,
+        err=> console.log(err)
+      );
+    return this.localidades.filter((item) => {
+        return item.nome.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
+    });
   }
 
 }

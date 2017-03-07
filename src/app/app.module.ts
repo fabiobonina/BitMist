@@ -33,8 +33,6 @@ import { MyService} from '../providers/my-service';
     OsModalPage,
     LoginPage,
     SignupPage
-
-    
   ],
   imports: [
     IonicModule.forRoot(MyApp)
