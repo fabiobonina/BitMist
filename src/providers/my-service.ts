@@ -13,12 +13,17 @@ export class MyService {
   }
 
   getData(){
-  	return this.storage.get('todos');
+  	return this.storage.get('user');
   }
 
   save(data){
   	let newData = JSON.stringify(data);
-  	this.storage.set('todos', newData);
+  	this.storage.set('user', newData);
+  }
+
+  isLogged(): boolean {
+        let user = localStorage.getItem('user');
+        return !(user === null);
   }
 
 }

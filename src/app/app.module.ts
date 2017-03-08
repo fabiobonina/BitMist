@@ -18,7 +18,8 @@ import { UserProvider} from '../providers/user-provider';
 import { ClienteProvider} from '../providers/cliente-provider';
 import { LocalidadeProvider} from '../providers/localidade-provider';
 import { OsProvider} from '../providers/os-provider';
-import { MyService} from '../providers/my-service';
+import { MyService } from '../providers/my-service';
+import { LoginGuard } from "../components/login-guard/login-guard";
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { MyService} from '../providers/my-service';
     OsRetornoPage,
     OsModalPage,
     LoginPage,
-    SignupPage
+    SignupPage,
+    LoginGuard
   ],
   imports: [
     IonicModule.forRoot(MyApp)

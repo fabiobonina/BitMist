@@ -5,6 +5,7 @@ import { Validators, FormBuilder } from '@angular/forms';
 import { OsModalPage} from '../os-modal/os-modal';
 import { OsProvider } from '../../providers/os-provider';
 import { MyService } from '../../providers/my-service';
+import { LoginPage } from "../login/login";
 /*
   Generated class for the OsSolicitacao page.
 
@@ -34,12 +35,15 @@ export class OsSolicitacaoPage implements OnInit{
           email:['', Validators.required],
           senha:['', Validators.required]
     });
+
+     
     
   }
 
   ngOnInit() {
-            this.getDados();
-            this.getUser();
+    this.guard();
+    this.getDados();
+    this.getUser();
   }
 
   getDados() {
@@ -52,12 +56,21 @@ export class OsSolicitacaoPage implements OnInit{
         
   }
   getUser() {
-    this.dataService.getData().then((todos) => {
-      this.user = JSON.parse(todos);
+    this.dataService.getData().then((user) => {
+      this.user = JSON.parse(user);
       err=> console.log(err)   
     });
     console.log(this.user);  
   }
+
+  
+
+    guard() {
+    if (!this.dataService.isLogged())
+            this.navCtrl.setRoot(LoginPage);
+    }
+
+  
 
   /*insert() {
     let modal = this.modalCtrl.create(OsModalPage);
