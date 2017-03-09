@@ -20,8 +20,7 @@ export class OsSolicitacaoPage implements OnInit{
 
   cadastro : any = {};
   osLists : any[];
-  user : any = {};
-  public nickuser;
+  usuario : any = {};
   public items = [];
 
   constructor(public navCtrl: NavController,
@@ -30,18 +29,11 @@ export class OsSolicitacaoPage implements OnInit{
               public modalCtrl: ModalController,
               public osDao: OsProvider,
               public dataService: MyService) {
-    this.cadastro = this.formBuilder.group({
-          nome:['', Validators.required],
-          email:['', Validators.required],
-          senha:['', Validators.required]
-    });
 
-     
-    
   }
 
   ngOnInit() {
-    this.guard();
+
     this.getDados();
     this.getUser();
   }
@@ -56,19 +48,21 @@ export class OsSolicitacaoPage implements OnInit{
         
   }
   getUser() {
-    this.dataService.getData().then((user) => {
-      this.user = JSON.parse(user);
-      err=> console.log(err)   
-    });
-    console.log(this.user);  
+    if (!this.dataService.isLogged()){
+      this.navCtrl.setRoot(LoginPage);
+    }        
+    this.dataService.getData().then((todos) => {
+      this.usuario = JSON.parse(todos);
+      err=> console.log(err)
+  });
+
+    console.log(this.usuario); 
+    
   }
 
   
 
-    guard() {
-    if (!this.dataService.isLogged())
-            this.navCtrl.setRoot(LoginPage);
-    }
+
 
   
 

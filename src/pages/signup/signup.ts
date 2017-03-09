@@ -3,6 +3,8 @@ import { NavController, NavParams } from 'ionic-angular';
 import { Http, Headers } from '@angular/http';
 
 import { HomePage } from '../home/home';
+import { MyService } from './../../providers/my-service';
+import { LoginPage } from "../login/login";
 
 @Component({
   selector: 'page-signup',
@@ -15,30 +17,28 @@ export class SignupPage {
   email: string;
   password: string;
   confirmPassword: string;
+  usuario : any = {};
 
-  constructor(public navCtrl: NavController, public http: Http, public navParams: NavParams) {}
+  constructor(public navCtrl: NavController,
+              public http: Http,
+              public navParams: NavParams,
+              public dao: MyService) {}
 
-  register(){
+
  
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
- 
-      let user = {
-        name: this.name,
-        username: this.username,
-        email: this.email,
-        password: this.password,
-        confirmPassword: this.confirmPassword
-      };
- 
-      //this.http.post('http://localhost:3000/auth/register', JSON.stringify(user), {headers: headers})
-        //.subscribe(res => {
-         // this.todoService.init(res.json());
-         // this.nav.setRoot(HomePage);
-        //}, (err) => {
-        //  console.log(err);
-        //}); 
- 
+    
+    logout() {
+      this.dao.logout();
+      this.dao.getData().then((todos) => {
+        if(!JSON.parse(todos)){
+          this.navCtrl.setRoot(LoginPage);
+        }
+        this.usuario = JSON.parse(todos);
+        err=> console.log(err)   
+    });
+
+    console.log(this.usuario); 
+    
   }
 
 }
