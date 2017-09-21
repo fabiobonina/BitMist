@@ -22,7 +22,7 @@ export class MyService {
   }
 
   isLogged(): boolean {
-        let todos = this.storage.get('todos');
+        let todos = localStorage.get('todos');
         return !(todos === null);
   }
 

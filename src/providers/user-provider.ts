@@ -12,7 +12,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class UserProvider {
 
-      api : string = 'http://localhost/codephp/skyhub/api/';
+      api : string = 'http://localhost:83/codephp/skyhub/api/';
 
   constructor(public http: Http) {}
       getData() {
